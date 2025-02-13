@@ -33,6 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".container");
   const card = document.querySelector(".card");
   const body = document.querySelector("body");
+  const firework = document.querySelectorAll(".firework");
+  const messageBox = document.querySelector(".message_box");
 
   container.addEventListener("mouseenter", () => {
       card.style.transition = "top 0.5s";
@@ -50,18 +52,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }, );
 
   body.addEventListener("click", () => {
+      messageBox.style.visibility = "hidden";
       card.style.transition = "top 0.5s";
       card.style.top = "0";
   }, true);
 
   noButton.addEventListener("mouseover", () => jumpingButton());
-  // noButton.addEventListener("mouseenter", () => jumpingButton());
+  noButton.addEventListener("mouseenter", () => jumpingButton());
   noButton.addEventListener("click", () => {
     jumpingButton();
     alert("но но но, містер Булочка")
   });
 
   yesButton.addEventListener("click", () => {
-    alert("Кохаю тебе, Булочка!");
+    messageBox.style.visibility = "visible";
+
+    firework.forEach(fire => {
+      fire.style.animation = "firework 2s infinite";
+    });
   });
 });
